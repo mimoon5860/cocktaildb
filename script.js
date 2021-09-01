@@ -1,5 +1,7 @@
 const search = () => {
     const input = document.getElementById('input-field');
+    document.getElementById("search-result").textContent = '';
+    document.getElementById('main-details').textContent = '';
     const url = `https://www.thecocktaildb.com/api/json/v1/1/search.php?s=${input.value}`;
     if (input.value === '') {
 
@@ -12,11 +14,9 @@ const search = () => {
     }
     input.value = '';
 };
+
 const displayResult = data => {
-    console.log(data)
-    const resultUi = document.getElementById("search-result")
-    resultUi.textContent = '';
-    document.getElementById('main-details').textContent = '';
+    const resultUi = document.getElementById("search-result");
     data.drinks.forEach(singleResult => {
         const result = document.createElement('div');
         result.innerHTML = `
@@ -41,6 +41,7 @@ const details = data => {
         .then(res => res.json())
         .then(data => showDetails(data.drinks[0]))
 };
+
 const showDetails = details => {
     const mainDetails = document.getElementById('main-details');
     mainDetails.innerHTML = `
