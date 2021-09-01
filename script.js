@@ -44,6 +44,7 @@ const details = data => {
 
 const showDetails = details => {
     const mainDetails = document.getElementById('main-details');
+    modalVisibility('visible')
     mainDetails.innerHTML = `
     <div class="card mb-3 mx-auto" style="max-width: 540px;">
         <div class="row g-0">
@@ -58,6 +59,10 @@ const showDetails = details => {
             </div>
             </div>
         </div>
+        <button onclick="modalVisibility('hidden')" class="btn btn-primary">Close</button>
     </div>
     `;
+};
+const modalVisibility = data => {
+    document.getElementById('modal-bg').style.visibility = data;
 }
